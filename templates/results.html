@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Traffic Volume Results</title>
+  </head>
+  <body>
+    <h1>Traffic Volume by Year</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Total Traffic Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          <td>{{ row['Year'] }}</td>
+          <td>{{ row['total_traffic_volume'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/">Back to Home</a>
+  </body>
+</html>
