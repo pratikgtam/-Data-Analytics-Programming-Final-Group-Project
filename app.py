@@ -163,5 +163,29 @@ def volume_by_hour_of_day():
     # Render chart template
     return render_template("chart.html", image_url="/static/volume_by_hour_of_day.png")
 
+@app.route("/volume_by_location")
+def volume_by_location():
+    # Generate a bar chart for traffic volume by location (Top 10)
+    query = """
+    SELECT "Location", SUM("DailyTrafficVolume") AS total_volume
+    FROM traffic_data
+    GROUP BY "Location"
+    ORDER BY total_volume DESC
+    LIMIT 10;
+    """
+    df = pd.read_sql(query, engine)
+
+    # Create a horizontal bar chart
+    plt.figure(figsize=(10, 6))
+    df.plot(kind='barh', x='Location', y='total_volume', color='skyblue', legend=False)
+    plt.title('Top 10 Locations by Traffic Volume')
+    plt.xlabel('Total Traffic Volume')
+    plt.ylabel('Location')
+    plt.savefig("static/volume_by_location.png")  # Save chart as an image
+    plt.close()  # Close the figure
+
+    # Render chart template
+    return render_template("chart.html", image_url="/static/volume_by_location.png")
+
 if __name__ == "__main__":
     app.run(debug=True)
