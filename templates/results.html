@@ -2,25 +2,44 @@
 <html>
   <head>
     <title>Traffic Volume Results</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
   </head>
   <body>
-    <h1>Traffic Volume by Year</h1>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Total Traffic Volume</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for row in data %}
-        <tr>
-          <td>{{ row['Year'] }}</td>
-          <td>{{ row['total_traffic_volume'] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <a href="/">Back to Home</a>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/chart">Chart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Traffic Volume by Year</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Total Traffic Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data %}
+          <tr>
+            <td>{{ row['Year'] }}</td>
+            <td>{{ row['total_traffic_volume'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a class="button" href="/">Back to Home</a>
+    </main>
+    <footer>
+      <p>&copy; 2023 Traffic Data Dashboard</p>
+    </footer>
   </body>
 </html>

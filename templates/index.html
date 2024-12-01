@@ -2,11 +2,31 @@
 <html>
   <head>
     <title>Traffic Data Dashboard</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
   </head>
   <body>
-    <h1>Welcome to the Traffic Data Dashboard</h1>
-    <p>Total Records in Database: {{ total_records }}</p>
-    <a href="/results">View Traffic Volume by Year</a><br />
-    <a href="/chart">View Traffic Volume Chart</a>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/chart">Chart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Welcome to the Traffic Data Dashboard</h1>
+      <p>Total Records in Database: {{ total_records }}</p>
+      <a class="button" href="/results">View Traffic Volume by Year</a>
+      <a class="button" href="/chart">View Traffic Volume Chart</a>
+      <a class="button" href="/line_chart">View Traffic Volume Line Chart</a>
+    </main>
+    <footer>
+      <p>&copy; 2023 Traffic Data Dashboard</p>
+    </footer>
   </body>
 </html>

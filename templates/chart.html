@@ -2,10 +2,29 @@
 <html>
   <head>
     <title>Traffic Volume Chart</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
   </head>
   <body>
-    <h1>Traffic Volume Chart</h1>
-    <img src="{{ image_url }}" alt="Traffic Volume Chart" />
-    <a href="/">Back to Home</a>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/chart">Chart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Traffic Volume Chart</h1>
+      <img src="{{ image_url }}" alt="Traffic Volume Chart" />
+      <a class="button" href="/">Back to Home</a>
+    </main>
+    <footer>
+      <p>&copy; 2023 Traffic Data Dashboard</p>
+    </footer>
   </body>
 </html>
